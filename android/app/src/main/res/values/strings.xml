@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ZH Einbürgerung</string>
+    <string name="title_activity_main">Grundkenntnistest Kanton Zürich</string>
+    <string name="package_name">com.jonbaraq.zuricheinbuergerung</string>
+    <string name="custom_url_scheme">com.jonbaraq.zuricheinbuergerung</string>
+</resources>

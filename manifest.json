@@ -1,0 +1,24 @@
+{
+  "name": "Grundkenntnistest Kanton Zürich",
+  "short_name": "ZH Einbürgerung",
+  "description": "Vorbereitung auf den kantonalen Grundkenntnistest im Einbürgerungsverfahren des Kantons Zürich (350 offizielle Fragen).",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#F4F7FA",
+  "theme_color": "#0076BD",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

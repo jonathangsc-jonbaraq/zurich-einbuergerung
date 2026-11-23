@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0076BD" />
+  <title>Grundkenntnistest Kanton Zürich – Einbürgerung</title>
+  <link rel="icon" type="image/png" href="assets/images/app_icon.png" />
+  <link rel="apple-touch-icon" href="assets/images/icon-192.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <!-- Top App Bar -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button id="btn-back-home" class="icon-btn hidden" aria-label="Zurück zur Übersicht" title="Zurück">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <div class="brand" id="brand-home">
+          <img src="assets/images/app_icon.png" alt="Schweiz &amp; Kanton Zürich Wappen" class="brand-icon-img" />
+          <div class="brand-text">
+            <span class="brand-kanton">Kanton Zürich</span>
+            <h1 class="brand-title">Grundkenntnistest</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span id="timer-badge" class="timer-badge hidden">60:00</span>
+          <button id="btn-catalog" class="icon-btn" aria-label="Fragenkatalog durchsuchen" title="Fragenkatalog (350 Fragen)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="main-content" class="main-content">
+      <!-- HOME VIEW -->
+      <section id="view-home" class="view active">
+        <!-- Hero Card -->
+        <div class="hero-card">
+          <div class="hero-top">
+            <img src="assets/images/app_icon.png" alt="Schweiz &amp; Kanton Zürich Wappen" class="hero-lion" />
+            <div class="hero-info">
+              <span class="badge-official">Offizieller Fragenkatalog (350 Fragen)</span>
+              <h2>Einbürgerungstest Kanton Zürich</h2>
+              <p>Vorbereitung auf den kantonalen Grundkenntnistest im Einbürgerungsverfahren.</p>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span class="stat-value" id="stat-mastered">0 / 350</span>
+              <span class="stat-label">Gemeistert</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="stat-accuracy">0%</span>
+              <span class="stat-label">Erfolgsquote</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="stat-failed-count">0</span>
+              <span class="stat-label">Fehlerfragen</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="stat-exams-passed">0</span>
+              <span class="stat-label">Tests bestanden</span>
+            </div>
+          </div>
+
+          <div class="overall-progress-wrap">
+            <div class="progress-meta">
+              <span>Lernfortschritt gesamt</span>
+              <span id="stat-progress-pct">0%</span>
+            </div>
+            <div class="progress-track">
+              <div id="stat-progress-bar" class="progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Core Modes Section -->
+        <h3 class="section-heading">Lern- & Prüfungsmodi</h3>
+        <div class="modes-list">
+          <!-- Mode 1: Training Mode -->
+          <div class="mode-card mode-training">
+            <div class="mode-card-header">
+              <div class="mode-icon-wrap blue">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+              </div>
+              <div class="mode-title-group">
+                <h4>1. Trainingsmodus</h4>
+                <p>Fragen mit direktem Feedback üben – nach Thema, Staatsebene oder Status filtern.</p>
+              </div>
+            </div>
+
+            <div class="training-filters">
+              <div class="filter-row">
+                <label for="train-category">Themengebiet</label>
+                <select id="train-category" class="select-input">
+                  <option value="all">Alle 5 Themengebiete (350 Fragen)</option>
+                  <option value="1">1. Demokratie und Föderalismus (127)</option>
+                  <option value="2">2. Sozialstaat und Zivilgesellschaft (81)</option>
+                  <option value="3">3. Geschichte (48)</option>
+                  <option value="4">4. Geografie (48)</option>
+                  <option value="5">5. Kultur und Alltagskultur (46)</option>
+                </select>
+              </div>
+              <div class="filter-row two-cols">
+                <div>
+                  <label for="train-level">Staatsebene</label>
+                  <select id="train-level" class="select-input">
+                    <option value="all">Alle Ebenen</option>
+                    <option value="Bund">Bund (274)</option>
+                    <option value="Kanton">Kanton (56)</option>
+                    <option value="Gemeinde">Gemeinde (20)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="train-filter">Fragenauswahl</label>
+                  <select id="train-filter" class="select-input">
+                    <option value="all">Alle Fragen</option>
+                    <option value="unanswered">Noch unbeantwortet</option>
+                    <option value="unmastered">Noch nicht gemeistert</option>
+                  </select>
+                </div>
+              </div>
+              <div class="filter-toggles">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="train-shuffle" />
+                  <span>Zufällige Reihenfolge</span>
+                </label>
+                <span id="train-match-count" class="match-pill">350 Fragen verfügbar</span>
+              </div>
+            </div>
+
+            <div class="mode-card-actions">
+              <button id="btn-start-training" class="btn btn-primary btn-block">
+                Training starten
+              </button>
+            </div>
+          </div>
+
+          <!-- Mode 2: Test Simulation (40 Questions) -->
+          <div class="mode-card mode-exam">
+            <div class="mode-card-header">
+              <div class="mode-icon-wrap navy">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="mode-title-group">
+                <div class="title-with-tag">
+                  <h4>2. Prüfungssimulation</h4>
+                  <span class="tag-pill">40 Fragen</span>
+                </div>
+                <p>Echte Testsimulation gemäss Vorgaben des Kantons Zürich: 40 zufällige Fragen aus allen 5 Themen, 60 Min. Zeitlimit, mind. 27 richtige Antworten (67.5%) zum Bestehen.</p>
+              </div>
+            </div>
+            <div class="mode-card-actions">
+              <button id="btn-start-exam" class="btn btn-navy btn-block">
+                40-Fragen-Test starten
+              </button>
+            </div>
+          </div>
+
+          <!-- Mode 3: Most Failed Questions Mode -->
+          <div class="mode-card mode-failed">
+            <div class="mode-card-header">
+              <div class="mode-icon-wrap red">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 9v4"/><path d="M12 17h.01"/>
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                </svg>
+              </div>
+              <div class="mode-title-group">
+                <div class="title-with-tag">
+                  <h4>3. Häufigste Fehler trainieren</h4>
+                  <span id="failed-badge-pill" class="tag-pill tag-red">0 Fragen</span>
+                </div>
+                <p>Trainiere gezielt die Fragen, die du am häufigsten falsch beantwortet hast – sortiert nach deiner Fehlerquote.</p>
+              </div>
+            </div>
+
+            <div id="failed-preview-box" class="failed-preview-box">
+              <!-- Populated dynamically with top failed questions or info message -->
+            </div>
+
+            <div class="mode-card-actions split-actions">
+              <button id="btn-start-failed" class="btn btn-danger">
+                Fehlerfragen üben
+              </button>
+              <button id="btn-view-failed-list" class="btn btn-outline">
+                Fehler-Rangliste
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic Progress Breakdown -->
+        <h3 class="section-heading">Fortschritt nach Themengebiet</h3>
+        <div id="categories-progress-list" class="categories-list"></div>
+
+        <!-- Secondary Actions -->
+        <div class="footer-actions">
+          <button id="btn-open-catalog-bottom" class="btn btn-outline btn-block">
+            Alle 350 Fragen im Katalog nachschlagen
+          </button>
+          <button id="btn-reset-stats" class="btn-text-danger">
+            Lernstatistik zurücksetzen
+          </button>
+        </div>
+      </section>
+
+      <!-- QUIZ VIEW (Used by Training, 40-Question Exam Simulation, and Failed Questions Mode) -->
+      <section id="view-quiz" class="view">
+        <div class="quiz-header-card">
+          <div class="quiz-meta-top">
+            <span id="quiz-mode-label" class="mode-pill">Trainingsmodus</span>
+            <span id="quiz-counter" class="quiz-counter">Frage 1 / 40</span>
+          </div>
+          <div class="progress-track compact">
+            <div id="quiz-progress-bar" class="progress-fill" style="width: 2.5%"></div>
+          </div>
+          <div class="quiz-category-tags">
+            <span id="quiz-cat-badge" class="cat-tag">1. Demokratie und Föderalismus</span>
+            <span id="quiz-subcat-badge" class="subcat-tag">1.1 Bund</span>
+            <span id="quiz-page-badge" class="page-tag">S. 2</span>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div id="question-card" class="question-card">
+          <div id="question-fail-indicator" class="question-fail-indicator hidden"></div>
+          <h2 id="question-text" class="question-text"></h2>
+          <div id="question-image-wrap" class="question-image-wrap hidden">
+            <img id="question-image" src="" alt="Frage Illustration" />
+          </div>
+
+          <!-- Options Container -->
+          <div id="options-container" class="options-container"></div>
+
+          <!-- Instant Feedback Banner (Training & Failed Modes) -->
+          <div id="feedback-banner" class="feedback-banner hidden"></div>
+        </div>
+
+        <!-- Quiz Navigation Footer -->
+        <div class="quiz-nav-bar">
+          <button id="btn-prev-q" class="btn btn-outline">
+            ← Zurück
+          </button>
+          <button id="btn-toggle-grid" class="btn btn-outline" title="Fragenübersicht">
+            Übersicht
+          </button>
+          <button id="btn-next-q" class="btn btn-primary">
+            Weiter →
+          </button>
+        </div>
+
+        <!-- Question Grid Drawer (for jumping to questions or submitting exam) -->
+        <div id="quiz-grid-panel" class="quiz-grid-panel hidden">
+          <div class="grid-panel-header">
+            <h4>Fragenübersicht</h4>
+            <button id="btn-close-grid" class="btn-small">Schliessen</button>
+          </div>
+          <div id="quiz-grid-numbers" class="quiz-grid-numbers"></div>
+          <div class="grid-panel-footer">
+            <button id="btn-finish-quiz-early" class="btn btn-navy btn-block">
+              Auswertung anzeigen
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTS VIEW -->
+      <section id="view-results" class="view">
+        <div id="results-hero" class="results-hero">
+          <div id="results-status-badge" class="results-status-badge">BESTANDEN</div>
+          <h2 id="results-title">Herzliche Gratulation!</h2>
+          <p id="results-subtitle"></p>
+
+          <div class="score-circle-wrap">
+            <div class="score-circle">
+              <span id="results-score-main" class="score-main">34 / 40</span>
+              <span id="results-score-pct" class="score-pct">85%</span>
+            </div>
+          </div>
+
+          <div class="results-metrics">
+            <div class="metric-item">
+              <span class="metric-num green" id="res-correct">0</span>
+              <span class="metric-lbl">Richtig</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-num red" id="res-wrong">0</span>
+              <span class="metric-lbl">Falsch</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-num" id="res-unanswered">0</span>
+              <span class="metric-lbl">Offen</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-num" id="res-time">00:00</span>
+              <span class="metric-lbl">Dauer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-actions">
+          <button id="btn-retry-mistakes" class="btn btn-danger btn-block hidden">
+            Falsche Fragen dieser Runde sofort üben
+          </button>
+          <div class="split-actions">
+            <button id="btn-results-restart" class="btn btn-primary">
+              Neue Runde starten
+            </button>
+            <button id="btn-results-home" class="btn btn-outline">
+              Zur Startseite
+            </button>
+          </div>
+        </div>
+
+        <!-- Topic Breakdown in Exam Results -->
+        <div id="results-topic-breakdown" class="results-topic-breakdown"></div>
+
+        <!-- Detailed Review of Questions -->
+        <div class="review-header-row">
+          <h3 class="section-heading">Detaillierte Durchsicht</h3>
+          <div class="review-filter-pills">
+            <button class="pill-btn active" data-review-filter="all">Alle</button>
+            <button class="pill-btn" data-review-filter="wrong">Nur Fehler</button>
+          </div>
+        </div>
+        <div id="results-review-list" class="review-list"></div>
+      </section>
+
+      <!-- MOST FAILED QUESTIONS RANKING VIEW -->
+      <section id="view-failed-list" class="view">
+        <div class="page-intro-card">
+          <div class="intro-header-row">
+            <div>
+              <h3>Deine häufigsten Fehlerfragen</h3>
+              <p>Alle Fragen, bei denen du mindestens einmal falsch lagst, sortiert nach Anzahl Fehlversuchen und Fehlerquote.</p>
+            </div>
+          </div>
+          <div class="failed-controls-row">
+            <button id="btn-train-all-failed" class="btn btn-danger">
+              Alle Fehlerfragen trainieren
+            </button>
+            <button id="btn-train-top15-failed" class="btn btn-outline">
+              Top 15 schwierigste üben
+            </button>
+          </div>
+        </div>
+        <div id="failed-ranking-container" class="review-list"></div>
+      </section>
+
+      <!-- FULL CATALOG / SEARCH VIEW -->
+      <section id="view-catalog" class="view">
+        <div class="catalog-search-card">
+          <h3>Offizieller Fragenkatalog (350 Fragen)</h3>
+          <div class="search-bar-wrap">
+            <input type="search" id="catalog-search-input" class="search-input" placeholder="Frage, Stichwort oder Frage-Nr. suchen..." />
+          </div>
+          <div class="filter-row two-cols">
+            <select id="catalog-cat-filter" class="select-input">
+              <option value="all">Alle Themen (350)</option>
+              <option value="1">1. Demokratie & Föderalismus</option>
+              <option value="2">2. Sozialstaat & Zivilgesellschaft</option>
+              <option value="3">3. Geschichte</option>
+              <option value="4">4. Geografie</option>
+              <option value="5">5. Kultur & Alltagskultur</option>
+            </select>
+            <select id="catalog-status-filter" class="select-input">
+              <option value="all">Alle Status</option>
+              <option value="failed">Mit Fehlern</option>
+              <option value="mastered">Gemeistert</option>
+              <option value="unseen">Unbeantwortet</option>
+            </select>
+          </div>
+          <div class="catalog-summary-line">
+            <span id="catalog-count-label">350 Fragen gefunden</span>
+          </div>
+        </div>
+        <div id="catalog-list-container" class="review-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
