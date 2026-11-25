@@ -12,12 +12,15 @@ dist
 dist-ssr
 *.local
 
-# Android / Gradle build caches
+# Android / Gradle build caches & signing keys
 android/.gradle
 android/build
 android/app/build
 android/capacitor-cordova-android-plugins/build
 android/local.properties
+android/keystore.properties
+*.jks
+*.keystore
 
 # Editor directories and files
 .vscode/*
