@@ -1,6 +1,6 @@
 # Google Play Store Publishing Guide — ZH Einbürgerung (Grundkenntnistest Kanton Zürich)
 
-Everything is configured (`minSdkVersion = 24`, `targetSdkVersion = 35`) and signed for uploading **ZH Einbürgerung** (`com.jonbaraq.zuricheinbuergerung`) to [Google Play Console](https://play.google.com/console).
+Everything is configured (`minSdkVersion = 24`, `compileSdkVersion = 36`, `targetSdkVersion = 36`, `versionCode = 2`) and signed for uploading **ZH Einbürgerung** (`com.jonbaraq.zuricheinbuergerung`) to [Google Play Console](https://play.google.com/console).
 
 ---
 
